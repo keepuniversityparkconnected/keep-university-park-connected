@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keep University Park Connected</title>
+<meta name="description" content="A community website advocating for transparent, data-driven traffic safety solutions and meaningful public input in University Park, Maryland.">
+<style>
+:root{
+  --navy:#17324d; --blue:#245d7c; --sky:#eaf4f8; --cream:#f8f5ee;
+  --gold:#d99b2b; --ink:#1e2b33; --muted:#5f6d73; --white:#fff;
+  --border:#d9e1e4; --shadow:0 14px 40px rgba(23,50,77,.12);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);line-height:1.6;background:var(--cream)}
+a{color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+.topbar{background:var(--navy);color:#fff;font-size:.9rem;padding:.65rem 0;text-align:center}
+header{background:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--border)}
+.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-weight:850;text-decoration:none;color:var(--navy);font-size:1.08rem;line-height:1.1}
+.brand span{display:block;color:var(--gold);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;margin-top:.25rem}
+nav{display:flex;gap:1.2rem;align-items:center}
+nav a{text-decoration:none;font-size:.92rem;font-weight:650}
+.menu-btn{display:none;border:1px solid var(--border);background:#fff;border-radius:10px;padding:.6rem .75rem;font-size:1rem}
+.hero{background:linear-gradient(135deg,rgba(23,50,77,.97),rgba(36,93,124,.91)),radial-gradient(circle at 85% 20%,rgba(217,155,43,.28),transparent 25%);color:#fff;padding:5.5rem 0 4.8rem}
+.eyebrow{color:#ffd98e;text-transform:uppercase;letter-spacing:.13em;font-size:.78rem;font-weight:800}
+.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:3rem;align-items:center}
+h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.02;letter-spacing:-.045em;margin:.6rem 0 1.25rem}
+.hero p{font-size:1.15rem;max-width:720px;color:#e8f0f4}
+.actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.7rem}
+.btn{display:inline-block;padding:.82rem 1.15rem;border-radius:999px;text-decoration:none;font-weight:800;border:2px solid transparent}
+.btn.primary{background:var(--gold);color:#172b38}.btn.secondary{border-color:#fff;color:#fff}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:1.5rem;backdrop-filter:blur(8px)}
+.hero-card strong{font-size:2.2rem;display:block;color:#ffd98e}
+section{padding:4.8rem 0}
+.section-title{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;color:var(--navy);margin:0 0 .8rem;letter-spacing:-.035em}
+.lead{font-size:1.1rem;color:var(--muted);max-width:780px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15rem;margin-top:2rem}
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.4rem;box-shadow:0 8px 24px rgba(23,50,77,.05)}
+.card h3{margin:.2rem 0 .6rem;color:var(--navy)}
+.card p{color:var(--muted);margin:0}
+.icon{width:42px;height:42px;border-radius:12px;background:var(--sky);display:grid;place-items:center;font-size:1.3rem}
+.statement{background:var(--sky);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.statement-box{background:#fff;border-left:6px solid var(--gold);border-radius:14px;padding:1.6rem;box-shadow:var(--shadow);font-size:1.22rem;font-weight:650}
+.locations{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2rem}
+.location{background:#fff;border:1px solid var(--border);border-radius:15px;padding:1.15rem;display:flex;gap:1rem}
+.number{flex:0 0 38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800}
+.note{font-size:.86rem;color:var(--muted);margin-top:1.4rem}
+.timeline{margin-top:2rem;border-left:3px solid var(--gold);padding-left:1.5rem}
+.timeline-item{margin:0 0 1.5rem}.timeline-item h3{margin:0;color:var(--navy)}
+.faq{margin-top:1.7rem}
+details{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1rem 1.15rem;margin:.7rem 0}
+summary{font-weight:800;cursor:pointer;color:var(--navy)}
+details p{color:var(--muted);margin-bottom:0}
+.cta{background:var(--navy);color:#fff;text-align:center}
+.cta .section-title{color:#fff}.cta p{color:#dbe8ee;max-width:700px;margin:0 auto 1.4rem}
+.resource-list{display:grid;gap:.8rem;margin-top:1.5rem}
+.resource{background:#fff;border:1px solid var(--border);padding:1rem 1.15rem;border-radius:12px;text-decoration:none;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.resource:hover{border-color:var(--blue);transform:translateY(-1px)}
+footer{background:#102637;color:#c9d5da;padding:2.5rem 0;font-size:.92rem}
+footer strong{color:#fff}
+.disclaimer{font-size:.82rem;color:#9fb1b9;margin-top:1rem}
+@media(max-width:800px){
+  .hero-grid,.grid-3,.locations{grid-template-columns:1fr}
+  nav{display:none;position:absolute;top:74px;left:0;right:0;background:#fff;padding:1rem 4%;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--border)}
+  nav.open{display:flex}.menu-btn{display:block}
+  .hero{padding:4rem 0}.hero-card{display:none}
+  section{padding:3.6rem 0}
+}
+</style>
+</head>
+<body>
+<div class="topbar">University Park residents deserve safe streets, transparent decisions, and meaningful public input.</div>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#top">KEEP UNIVERSITY PARK CONNECTED<span>University Park, Maryland</span></a>
+    <button class="menu-btn" aria-label="Open navigation" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+    <nav>
+      <a href="#why">Why It Matters</a>
+      <a href="#locations">Locations</a>
+      <a href="#questions">Questions</a>
+      <a href="#resources">Resources</a>
+      <a href="#act">Get Involved</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">A community conversation about our streets</div>
+      <h1>Safer streets.<br>Connected neighborhood.</h1>
+      <p>University Park can pursue effective traffic-safety solutions without unnecessarily limiting access to our neighborhood. We support transparent, data-driven decisions and meaningful opportunities for residents to be heard.</p>
+      <div class="actions">
+        <a class="btn primary" href="#locations">Explore proposed concepts</a>
+        <a class="btn secondary" href="#resources">View Town resources</a>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <strong>Safety + access</strong>
+      <p>These goals do not have to be in conflict. Residents should understand the options, the data, and the potential consequences before major street changes are implemented.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--gold)">Our position</div>
+    <h2 class="section-title">We can support traffic safety without supporting every traffic-control proposal.</h2>
+    <p class="lead">This website is intended to help University Park residents follow the discussion around traffic diverters and other traffic-control concepts, review public information, and participate in decisions affecting neighborhood streets.</p>
+    <div class="grid-3">
+      <article class="card"><div class="icon">🗣️</div><h3>Meaningful public input</h3><p>Residents should have clear opportunities to understand proposals and share their perspectives before major changes move forward.</p></article>
+      <article class="card"><div class="icon">📊</div><h3>Data-driven decisions</h3><p>Traffic interventions should be evaluated using clear data, stated goals, and measurable results.</p></article>
+      <article class="card"><div class="icon">🔄</div><h3>Consider all impacts</h3><p>A change that improves one intersection may affect nearby streets. Those potential impacts deserve careful consideration.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="statement">
+  <div class="container">
+    <div class="statement-box">“Before permanent changes reshape how residents move through University Park, the community deserves clear information, meaningful input, and a full discussion of alternatives.”</div>
+  </div>
+</section>
+
+<section id="locations">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--gold)">Traffic-control concepts</div>
+    <h2 class="section-title">Locations identified in Town concept materials</h2>
+    <p class="lead">The Town's PTPS page links to traffic-control concepts and additional traffic-study resources. The locations below are presented as locations appearing in publicly available concept materials—not as a statement that each location has been finally approved or will necessarily be built.</p>
+    <div class="locations">
+      <div class="location"><div class="number">1</div><div><strong>Clagett Road &amp; Pineway</strong><br><span>Concept location identified for a semi-traffic diverter.</span></div></div>
+      <div class="location"><div class="number">2</div><div><strong>Van Buren Street &amp; 40th Avenue</strong><br><span>Concept location identified in Town traffic-control materials.</span></div></div>
+      <div class="location"><div class="number">3</div><div><strong>Queens Chapel Road &amp; Van Buren Street</strong><br><span>Concept location identified in Town traffic-control materials.</span></div></div>
+      <div class="location"><div class="number">4</div><div><strong>Wells Parkway &amp; Chansory Lane</strong><br><span>Concept location identified in Town traffic-control materials.</span></div></div>
+      <div class="location"><div class="number">5</div><div><strong>College Heights Drive &amp; Van Buren Street</strong><br><span>Concept location identified in Town traffic-control materials.</span></div></div>
+      <div class="location"><div class="number">6</div><div><strong>Beechwood Road &amp; Van Buren Street</strong><br><span>Concept location identified in Town traffic-control materials.</span></div></div>
+    </div>
+    <p class="note">Important: Planning concepts, recommendations, approvals, pilot projects, and completed installations are different stages. This website should be updated as the Town publishes new information.</p>
+  </div>
+</section>
+
+<section id="questions">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--gold)">Questions worth asking</div>
+    <h2 class="section-title">Good public policy starts with clear answers.</h2>
+    <div class="faq">
+      <details><summary>Will traffic simply move to another residential street?</summary><p>When access is restricted at one location, residents should understand how traffic patterns may change elsewhere and how those effects will be measured.</p></details>
+      <details><summary>What alternatives have been considered?</summary><p>Residents should be able to compare diverters with other approaches such as traffic calming, intersection improvements, enforcement, or other measures discussed in public materials.</p></details>
+      <details><summary>How will success be defined?</summary><p>Before implementation, the Town should clearly identify the safety and traffic outcomes it intends to achieve and how it will evaluate results.</p></details>
+      <details><summary>What opportunities will residents have to comment?</summary><p>Public meetings, committee discussions, agendas, minutes, and Council decisions should be easy for residents to find and follow.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="resources">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--gold)">Public information</div>
+    <h2 class="section-title">Start with the Town's own documents.</h2>
+    <p class="lead">The best community discussion is based on primary sources. These links take residents to University Park's publicly available information.</p>
+    <div class="resource-list">
+      <a class="resource" href="https://upmd.org/190/Police-Traffic-Public-Safety-Committee-P" target="_blank" rel="noopener"><span><strong>Police, Traffic &amp; Public Safety Committee</strong><br>Committee role, current traffic-study documents, meetings, and agendas.</span><span>↗</span></a>
+      <a class="resource" href="https://www.upmd.org/396/Traffic-Studies-Reports-and-Data-Collect" target="_blank" rel="noopener"><span><strong>Traffic Studies, Reports &amp; Data</strong><br>Town page for additional traffic-study documents and resources.</span><span>↗</span></a>
+      <a class="resource" href="https://upmd.org/190/Police-Traffic-Public-Safety-Committee-P" target="_blank" rel="noopener"><span><strong>Meeting information</strong><br>Check the Town's PTPS page for current meeting and agenda information.</span><span>↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="act" class="cta">
+  <div class="container">
+    <div class="eyebrow">Get involved</div>
+    <h2 class="section-title">Stay informed. Ask questions. Participate.</h2>
+    <p>Community participation is strongest when residents have the information they need before decisions are finalized.</p>
+    <div class="actions" style="justify-content:center">
+      <a class="btn primary" href="https://upmd.org/190/Police-Traffic-Public-Safety-Committee-P" target="_blank" rel="noopener">Check PTPS information</a>
+      <a class="btn secondary" href="mailto:townhall@upmd.org?subject=University%20Park%20Traffic%20Diverter%20Question">Contact Town Hall</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>Keep University Park Connected</strong><br>
+    A resident-focused website advocating for transparent, thoughtful, and community-informed traffic-safety decisions.
+    <p class="disclaimer">This is an independent community website and is not an official website of the Town of University Park. Information about Town proposals should be verified against official Town documents and announcements.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('nav a').forEach(link => link.addEventListener('click', () => {
+  document.querySelector('nav').classList.remove('open');
+}));
+</script>
+</body>
+</html>
