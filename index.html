@@ -106,6 +106,7 @@ footer strong{color:#fff}
       <a href="#survey">Resident Survey</a>
       <a href="#why">Why It Matters</a>
       <a href="#alternatives">Alternatives</a>
+       <a href="#directions">Map Your Route</a>
       <a href="#questions">Questions</a>
       <a href="#resources">Resources</a>
       <a href="#act">Get Involved</a>
@@ -156,42 +157,31 @@ footer strong{color:#fff}
 </section>
 
 <section class="alt" id="directions">
-  <div class="container">
-    <div class="eyebrow" style="color:var(--gold)">Getting around</div>
-    <h2 class="section-title">Get directions while avoiding Clagett Rd &amp; Clagett-Pineway</h2>
-    <p class="lead">Enter your starting address and destination below. The route planner uses a fixed detour through nearby roads so the route does not pass through the Clagett Rd / Clagett-Pineway intersection in any direction.</p>
-    <div class="directions">
-      <h3>Plan your route</h3>
-      <form id="directions-form">
-        <div class="direction-fields">
-          <label>
-            <span>Starting address</span>
-            <input id="start-address" type="text" placeholder="Enter your starting address" autocomplete="street-address" required>
-          </label>
-          <label>
-            <span>Destination</span>
-            <input id="destination-address" type="text" placeholder="Enter your destination" autocomplete="street-address" required>
-          </label>
-        </div>
-        <div class="direction-actions">
-          <button class="btn primary" type="submit">Get directions</button>
-        </div>
-      </form>
-      <p style="margin-top:1rem"><strong>How it works:</strong> Google Maps does not provide a public URL setting for closing one specific road or intersection. Instead, this planner adds multiple nearby detour waypoints that route traffic around the affected area rather than through the Clagett Rd / Clagett-Pineway intersection. Always review the generated route before driving.</p>
-    </div>
-  </div>
+<div class="grid two">
+<div class="routebox">
+<h3 style="margin-top:0">Try your route</h3>
+<label for="origin">Your University Park address</label>
+<input id="origin" placeholder="Example: 4300 block of Clagett Road, University Park, MD">
+<label for="routeOption">Alternative route</label>
+<select id="routeOption">
+<option value="Baltimore Avenue">Via Baltimore Avenue / Route 1</option>
+<option value="Woodberry Street">Via Woodberry Street</option>
+<option value="Van Buren Street">Via Van Buren Street</option>
+</select>
+<button class="btn orange" onclick="openRoute()">Open Directions in Google Maps</button>
+<p class="small">The map application ultimately controls the exact route. Check the displayed route before driving and obey all current signs and closures.</p>
+</div>
 </section>
+
 
 <section id="survey">
   <div class="container">
     <div class="eyebrow" style="color:var(--gold)">Community feedback</div>
     <h2 class="section-title">Help us understand your concerns and priorities.</h2>
     <p class="lead">Your input is valuable as we work to improve traffic safety and accessibility in University Park.</p>
-    <p class="lead">Take the survey to share your thoughts and experiences.</p>
+    <p class="lead">Take the survey to share your thoughts and experiences. Sign the petition to express your view on the proposed changes.</p>
     <div class="actions" style="justify-content:center">
     <a class="btn primary" href="https://forms.gle/tjprNKDnFsKsmpeRA" target="_blank" rel="noopener">Resident Survey</a>
-    <p class="lead">Sign the petition to express your view on the proposed changes.</p>
-    <div class="actions" style="justify-content:center">
     <a class="btn primary" href="https://www.change.org/p/keep-up-connected-stop-plans-for-disruptive-traffic-diverters-in-up" target="_blank" rel="noopener">Sign the Petition</a>
     </div>
   </div>
