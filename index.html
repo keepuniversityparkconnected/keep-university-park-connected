@@ -106,6 +106,7 @@ footer strong{color:#fff}
       <a href="#survey">Resident Survey</a>
       <a href="#why">Why It Matters</a>
       <a href="#alternatives">Alternatives</a>
+       <a href="#directions">Map Your Route</a>
       <a href="#questions">Questions</a>
       <a href="#resources">Resources</a>
       <a href="#act">Get Involved</a>
@@ -162,9 +163,10 @@ footer strong{color:#fff}
     <div class="eyebrow" style="color:var(--gold)">Community feedback</div>
     <h2 class="section-title">Help us understand your concerns and priorities.</h2>
     <p class="lead">Your input is valuable as we work to improve traffic safety and accessibility in University Park.</p>
-    <p class="lead">Take the survey to share your thoughts and experiences.</p>
+    <p class="lead">Take the survey to share your thoughts and experiences. Sign the petition to express your view on the proposed changes.</p>
     <div class="actions" style="justify-content:center">
     <a class="btn primary" href="https://forms.gle/tjprNKDnFsKsmpeRA" target="_blank" rel="noopener">Resident Survey</a>
+    <a class="btn primary" href="https://www.change.org/p/keep-up-connected-stop-plans-for-disruptive-traffic-diverters-in-up" target="_blank" rel="noopener">Sign the Petition</a>
     </div>
   </div>
 </section>
@@ -172,7 +174,7 @@ footer strong{color:#fff}
 <section id="resources">
   <div class="container">
     <div class="eyebrow" style="color:var(--gold)">Public information</div>
-    <h2 class="section-title">Start with the Town's own documents.</h2>
+    <h2 class="section-title">Town's Documents</h2>
     <p class="lead">The best community discussion is based on primary sources.</p>
     <div class="resource-list">
       <a class="resource" href="https://upmd.org/190/Police-Traffic-Public-Safety-Committee-P" target="_blank" rel="noopener"><span><strong>Police, Traffic &amp; Public Safety Committee</strong><br>Committee role, current traffic-study documents, meetings, and agendas.</span><span>↗</span></a>
@@ -252,19 +254,22 @@ document.querySelectorAll('nav a').forEach(link => link.addEventListener('click'
 
 document.getElementById('directions-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  const origin = document.getElementById('origin').value.trim();
-  const routeOption = document.getElementById('routeOption').value;
-  if (!origin) return;
+  const start = document.getElementById('start-address').value.trim();
+  const destination = document.getElementById('destination-address').value.trim();
+  if (!start || !destination) return;
 
-  const params = new URLSearchParams({
-    api: '1',
-    origin: origin,
-    destination: 'University Park, MD',
-    travelmode: 'driving',
-    waypoints: routeOption
-  });
-
-  window.open('https://www.google.com/maps/dir/?' + params.toString(), '_blank', 'noopener,noreferrer');
+  // Google Maps Directions URLs cannot directly mark a specific road/intersection
+  // as closed. These detour waypoints steer the route around the Clagett Rd /
+  // Clagett-Pineway intersection instead of using that connection.
+  const detour = [
+    'College Heights Dr and Wells Pkwy, University Park, MD',
+    'Wells Pkwy and Queens Chapel Rd, University Park, MD'
+  ];
+  const url = 'https://www.google.com/maps/dir/?api=1'
+    + '&origin=' + encodeURIComponent(start)
+    + '&destination=' + encodeURIComponent(destination)
+    + '&waypoints=' + detour.map(encodeURIComponent).join('%7C');
+  window.open(url, '_blank', 'noopener');
 });
 </script>
 </body>
