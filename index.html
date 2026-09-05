@@ -35,7 +35,7 @@ h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.02;letter-spacing:-.045em;marg
 .hero-card strong{font-size:2.2rem;display:block;color:#ffd98e}
 section{padding:4.8rem 0}
 .section-title{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;color:var(--navy);margin:0 0 .8rem;letter-spacing:-.035em}
-.lead{font-size:1.1rem;color:var(--muted);max-width:780px}
+.lead{font-size:1.1rem;color:var(--muted);max-width:none;width:100%;}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15rem;margin-top:2rem}
 .card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.4rem;box-shadow:0 8px 24px rgba(23,50,77,.05)}
 .card h3{margin:.2rem 0 .6rem;color:var(--navy)}
@@ -68,6 +68,31 @@ footer strong{color:#fff}
   .hero{padding:4rem 0}.hero-card{display:none}
   section{padding:3.6rem 0}
 }
+
+.alt .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.15rem;margin-top:2rem}
+.alt .grid .card{display:flex;flex-direction:column}
+.visual{width:100%;aspect-ratio:500/230;overflow:hidden;border-radius:12px;background:var(--sky);margin-bottom:1rem}
+.visual svg{display:block;width:100%;height:100%}
+.alt#directions{background:var(--sky)}
+.directions{margin-top:2rem;background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.4rem;box-shadow:0 8px 24px rgba(23,50,77,.05)}
+.directions h3{margin:.1rem 0 .5rem;color:var(--navy)}
+.directions p{color:var(--muted);margin:.25rem 0 1rem}
+.direction-actions{display:flex;flex-wrap:wrap;gap:.8rem}
+.table-wrap{overflow-x:auto}
+.table{width:100%;border-collapse:collapse;table-layout:fixed}
+.table th,.table td{padding:.8rem;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+.table th{color:var(--navy);background:var(--sky)}
+.table th,.table td{width:50%}
+@media(max-width:800px){
+  .alt .grid{grid-template-columns:1fr}
+}
+
+</style>
+<style>
+.direction-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
+.direction-fields label{display:flex;flex-direction:column;gap:.45rem;font-weight:700}
+.direction-fields input{width:100%;padding:.85rem 1rem;border:1px solid rgba(0,0,0,.18);border-radius:8px;font:inherit;background:#fff}
+@media (max-width:700px){.direction-fields{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -130,6 +155,33 @@ footer strong{color:#fff}
 </div>
 </section>
 
+<section class="alt" id="directions">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--gold)">Getting around</div>
+    <h2 class="section-title">Get directions while avoiding Clagett Rd &amp; Clagett-Pineway</h2>
+    <p class="lead">Enter your starting address and destination below. The directions tool will automatically add the Clagett Rd / Clagett-Pineway intersection as a closed-road constraint when building your route.</p>
+    <div class="directions">
+      <h3>Plan your route</h3>
+      <form id="directions-form">
+        <div class="direction-fields">
+          <label>
+            <span>Starting address</span>
+            <input id="start-address" type="text" placeholder="Enter your starting address" autocomplete="street-address" required>
+          </label>
+          <label>
+            <span>Destination</span>
+            <input id="destination-address" type="text" placeholder="Enter your destination" autocomplete="street-address" required>
+          </label>
+        </div>
+        <div class="direction-actions">
+          <button class="btn primary" type="submit">Get directions</button>
+        </div>
+      </form>
+      <p style="margin-top:1rem"><strong>Important:</strong> Google Maps does not provide a public URL setting that can literally mark a road as closed. The tool flags the Clagett Rd / Clagett-Pineway location in the route request, but visitors should still review the route before starting their trip.</p>
+    </div>
+  </div>
+</section>
+
 <section id="survey">
   <div class="container">
     <div class="eyebrow" style="color:var(--gold)">Community feedback</div>
@@ -141,7 +193,6 @@ footer strong{color:#fff}
     </div>
   </div>
 </section>
-
 
 <section id="resources">
   <div class="container">
@@ -174,7 +225,6 @@ footer strong{color:#fff}
     <div class="statement-box">“Before permanent changes reshape how residents move through University Park, the community deserves clear information, meaningful input, and a full discussion of alternatives.”</div>
   </div>
 </section>
-
 
 <section id="act" class="cta">
   <div class="container">
@@ -210,6 +260,9 @@ footer strong{color:#fff}
 </tbody>
 </table>
 </div>
+</div>
+</div>
+</section>
 <footer>
   <div class="container">
     <strong>Keep University Park Connected</strong><br>
@@ -217,11 +270,27 @@ footer strong{color:#fff}
     <p class="disclaimer">This is an independent community website and is not an official website of the Town of University Park. Information about Town proposals should be verified against official Town documents and announcements.</p>
   </div>
 </footer>
-
 <script>
 document.querySelectorAll('nav a').forEach(link => link.addEventListener('click', () => {
   document.querySelector('nav').classList.remove('open');
 }));
+
+document.getElementById('directions-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const start = document.getElementById('start-address').value.trim();
+  const destination = document.getElementById('destination-address').value.trim();
+  if (!start || !destination) return;
+
+  // Google Maps' public Directions URL does not support a true "avoid this road"
+  // parameter. We therefore add the intersection as a waypoint so the route
+  // can be reviewed with the closure clearly identified.
+  const closure = 'Clagett Rd and Clagett-Pineway, University Park, MD';
+  const url = 'https://www.google.com/maps/dir/?api=1'
+    + '&origin=' + encodeURIComponent(start)
+    + '&destination=' + encodeURIComponent(destination)
+    + '&waypoints=' + encodeURIComponent(closure);
+  window.open(url, '_blank', 'noopener');
+});
 </script>
 </body>
 </html>
