@@ -159,7 +159,7 @@ footer strong{color:#fff}
   <div class="container">
     <div class="eyebrow" style="color:var(--gold)">Getting around</div>
     <h2 class="section-title">Get directions while avoiding Clagett Rd &amp; Clagett-Pineway</h2>
-    <p class="lead">Enter your starting address and destination below. The directions tool will automatically add the Clagett Rd / Clagett-Pineway intersection as a closed-road constraint when building your route.</p>
+    <p class="lead">Enter your starting address and destination below. The route planner uses a fixed detour through nearby roads so the route does not pass through the Clagett Rd / Clagett-Pineway intersection in any direction.</p>
     <div class="directions">
       <h3>Plan your route</h3>
       <form id="directions-form">
@@ -177,7 +177,7 @@ footer strong{color:#fff}
           <button class="btn primary" type="submit">Get directions</button>
         </div>
       </form>
-      <p style="margin-top:1rem"><strong>Important:</strong> Google Maps does not provide a public URL setting that can literally mark a road as closed. The tool flags the Clagett Rd / Clagett-Pineway location in the route request, but visitors should still review the route before starting their trip.</p>
+      <p style="margin-top:1rem"><strong>How it works:</strong> Google Maps does not provide a public URL setting for closing one specific road or intersection. Instead, this planner adds multiple nearby detour waypoints that route traffic around the affected area rather than through the Clagett Rd / Clagett-Pineway intersection. Always review the generated route before driving.</p>
     </div>
   </div>
 </section>
@@ -190,6 +190,9 @@ footer strong{color:#fff}
     <p class="lead">Take the survey to share your thoughts and experiences.</p>
     <div class="actions" style="justify-content:center">
     <a class="btn primary" href="https://forms.gle/tjprNKDnFsKsmpeRA" target="_blank" rel="noopener">Resident Survey</a>
+    <p class="lead">Sign the petition to express your view on the proposed changes.</p>
+    <div class="actions" style="justify-content:center">
+    <a class="btn primary" href="https://www.change.org/p/keep-up-connected-stop-plans-for-disruptive-traffic-diverters-in-up" target="_blank" rel="noopener">Sign the Petition</a>
     </div>
   </div>
 </section>
@@ -197,7 +200,7 @@ footer strong{color:#fff}
 <section id="resources">
   <div class="container">
     <div class="eyebrow" style="color:var(--gold)">Public information</div>
-    <h2 class="section-title">Start with the Town's own documents.</h2>
+    <h2 class="section-title">Town's Documents</h2>
     <p class="lead">The best community discussion is based on primary sources.</p>
     <div class="resource-list">
       <a class="resource" href="https://upmd.org/190/Police-Traffic-Public-Safety-Committee-P" target="_blank" rel="noopener"><span><strong>Police, Traffic &amp; Public Safety Committee</strong><br>Committee role, current traffic-study documents, meetings, and agendas.</span><span>↗</span></a>
@@ -281,14 +284,17 @@ document.getElementById('directions-form').addEventListener('submit', function(e
   const destination = document.getElementById('destination-address').value.trim();
   if (!start || !destination) return;
 
-  // Google Maps' public Directions URL does not support a true "avoid this road"
-  // parameter. We therefore add the intersection as a waypoint so the route
-  // can be reviewed with the closure clearly identified.
-  const closure = 'Clagett Rd and Clagett-Pineway, University Park, MD';
+  // Google Maps Directions URLs cannot directly mark a specific road/intersection
+  // as closed. These detour waypoints steer the route around the Clagett Rd /
+  // Clagett-Pineway intersection instead of using that connection.
+  const detour = [
+    'College Heights Dr and Wells Pkwy, University Park, MD',
+    'Wells Pkwy and Queens Chapel Rd, University Park, MD'
+  ];
   const url = 'https://www.google.com/maps/dir/?api=1'
     + '&origin=' + encodeURIComponent(start)
     + '&destination=' + encodeURIComponent(destination)
-    + '&waypoints=' + encodeURIComponent(closure);
+    + '&waypoints=' + detour.map(encodeURIComponent).join('%7C');
   window.open(url, '_blank', 'noopener');
 });
 </script>
