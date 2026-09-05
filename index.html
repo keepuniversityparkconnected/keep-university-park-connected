@@ -159,25 +159,25 @@ footer strong{color:#fff}
   <div class="container">
     <div class="eyebrow" style="color:var(--gold)">Getting around</div>
     <h2 class="section-title">Try your route</h2>
-    <p class="lead">Plan a route through University Park using an alternative street instead of traveling through the Clagett Rd / Clagett-Pineway area.</p>
+    <p class="lead">Enter your University Park address and choose an alternative street. Google Maps will open a driving route that uses your selected street as a waypoint instead of directing you through the Clagett Rd / Clagett-Pineway area.</p>
     <div class="directions">
       <h3>Plan your route</h3>
       <form id="directions-form">
         <div class="direction-fields">
           <label for="origin">Your University Park address</label>
-          <input id="origin" placeholder="Example: 4300 block of Clagett Road, University Park, MD" required>
+          <input id="origin" name="origin" type="text" placeholder="Example: 4300 block of Clagett Road, University Park, MD" autocomplete="street-address" required>
           <label for="routeOption">Alternative route</label>
-          <select id="routeOption">
-            <option value="Baltimore Avenue">Via Baltimore Avenue / Route 1</option>
-            <option value="Woodberry Street">Via Woodberry Street</option>
-            <option value="Van Buren Street">Via Van Buren Street</option>
+          <select id="routeOption" name="routeOption">
+            <option value="Baltimore Avenue, University Park, MD">Via Baltimore Avenue / Route 1</option>
+            <option value="Woodberry Street, University Park, MD">Via Woodberry Street</option>
+            <option value="Van Buren Street, University Park, MD">Via Van Buren Street</option>
           </select>
         </div>
         <div class="direction-actions">
           <button class="btn orange" type="submit">Open Directions in Google Maps</button>
         </div>
       </form>
-      <p class="small">The map application ultimately controls the exact route. Check the displayed route before driving and obey all current signs and closures.</p>
+      <p class="small">Google Maps does not provide a public URL setting to permanently close a specific road. This tool uses your selected street as a waypoint to influence the route. Check the displayed route before driving and obey all current signs and closures.</p>
     </div>
   </div>
 </section>
@@ -277,22 +277,19 @@ document.querySelectorAll('nav a').forEach(link => link.addEventListener('click'
 
 document.getElementById('directions-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  const start = document.getElementById('start-address').value.trim();
-  const destination = document.getElementById('destination-address').value.trim();
-  if (!start || !destination) return;
+  const origin = document.getElementById('origin').value.trim();
+  const routeOption = document.getElementById('routeOption').value;
+  if (!origin) return;
 
-  // Google Maps Directions URLs cannot directly mark a specific road/intersection
-  // as closed. These detour waypoints steer the route around the Clagett Rd /
-  // Clagett-Pineway intersection instead of using that connection.
-  const detour = [
-    'Woodberry St and Wells Pkwy, University Park, MD',
-    'Van Buren St and Wells Pkwy, University Park, MD'
-  ];
-  const url = 'https://www.google.com/maps/dir/?api=1'
-    + '&origin=' + encodeURIComponent(start)
-    + '&destination=' + encodeURIComponent(destination)
-    + '&waypoints=' + detour.map(encodeURIComponent).join('%7C');
-  window.open(url, '_blank', 'noopener');
+  const params = new URLSearchParams({
+    api: '1',
+    origin: origin,
+    destination: 'University Park, MD',
+    travelmode: 'driving',
+    waypoints: routeOption
+  });
+
+  window.open('https://www.google.com/maps/dir/?' + params.toString(), '_blank', 'noopener,noreferrer');
 });
 </script>
 </body>
