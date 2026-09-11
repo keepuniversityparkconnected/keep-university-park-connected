@@ -3,274 +3,2202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keep University Park Connected</title>
-<meta name="description" content="A community website advocating for transparent, data-driven traffic safety solutions and meaningful public input in University Park, Maryland.">
+<title>Keep University Park Connected | Keep UP Diverter-Free</title>
+<meta name="description" content="A resident-focused website advocating for safe streets, transparent traffic decisions, meaningful public input, and a connected University Park, Maryland.">
+
 <style>
 :root{
-  --navy:#17324d; --blue:#245d7c; --sky:#eaf4f8; --cream:#f8f5ee;
-  --gold:#d99b2b; --ink:#1e2b33; --muted:#5f6d73; --white:#fff;
-  --border:#d9e1e4; --shadow:0 14px 40px rgba(23,50,77,.12);
+  --navy:#17324d;
+  --blue:#245d7c;
+  --sky:#eaf4f8;
+  --cream:#f8f5ee;
+  --gold:#d99b2b;
+  --gold-light:#ffd98e;
+  --ink:#1e2b33;
+  --muted:#5f6d73;
+  --white:#fff;
+  --border:#d9e1e4;
+  --green:#416b56;
+  --red:#a84d3d;
+  --shadow:0 14px 40px rgba(23,50,77,.12);
 }
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);line-height:1.6;background:var(--cream)}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  line-height:1.6;
+  background:var(--cream);
+}
+
 a{color:inherit}
-.container{width:min(1120px,92%);margin:auto}
-.topbar{background:var(--navy);color:#fff;font-size:.9rem;padding:.65rem 0;text-align:center}
-header{background:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--border)}
-.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brand{font-weight:850;text-decoration:none;color:var(--navy);font-size:1.08rem;line-height:1.1}
-.brand span{display:block;color:var(--gold);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;margin-top:.25rem}
-nav{display:flex;gap:1.2rem;align-items:center}
-nav a{text-decoration:none;font-size:.92rem;font-weight:650}
-.menu-btn{display:none;border:1px solid var(--border);background:#fff;border-radius:10px;padding:.6rem .75rem;font-size:1rem}
-.hero{background:linear-gradient(135deg,rgba(23,50,77,.97),rgba(36,93,124,.91)),radial-gradient(circle at 85% 20%,rgba(217,155,43,.28),transparent 25%);color:#fff;padding:5.5rem 0 4.8rem}
-.eyebrow{color:#ffd98e;text-transform:uppercase;letter-spacing:.13em;font-size:.78rem;font-weight:800}
-.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:3rem;align-items:center}
-h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.02;letter-spacing:-.045em;margin:.6rem 0 1.25rem}
-.hero p{font-size:1.15rem;max-width:720px;color:#e8f0f4}
-.actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.7rem}
-.btn{display:inline-block;padding:.82rem 1.15rem;border-radius:999px;text-decoration:none;font-weight:800;border:2px solid transparent}
-.btn.primary{background:var(--gold);color:#172b38}.btn.secondary{border-color:#fff;color:#fff}
-.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:1.5rem;backdrop-filter:blur(8px)}
-.hero-card strong{font-size:2.2rem;display:block;color:#ffd98e}
-section{padding:4.8rem 0}
-.section-title{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;color:var(--navy);margin:0 0 .8rem;letter-spacing:-.035em}
-.lead{font-size:1.1rem;color:var(--muted);max-width:none;width:100%;}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15rem;margin-top:2rem}
-.card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.4rem;box-shadow:0 8px 24px rgba(23,50,77,.05)}
-.card h3{margin:.2rem 0 .6rem;color:var(--navy)}
-.card p{color:var(--muted);margin:0}
-.icon{width:42px;height:42px;border-radius:12px;background:var(--sky);display:grid;place-items:center;font-size:1.3rem}
-.statement{background:var(--sky);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.statement-box{background:#fff;border-left:6px solid var(--gold);border-radius:14px;padding:1.6rem;box-shadow:var(--shadow);font-size:1.22rem;font-weight:650}
-.locations{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2rem}
-.location{background:#fff;border:1px solid var(--border);border-radius:15px;padding:1.15rem;display:flex;gap:1rem}
-.number{flex:0 0 38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800}
-.note{font-size:.86rem;color:var(--muted);margin-top:1.4rem}
-.timeline{margin-top:2rem;border-left:3px solid var(--gold);padding-left:1.5rem}
-.timeline-item{margin:0 0 1.5rem}.timeline-item h3{margin:0;color:var(--navy)}
-.faq{margin-top:1.7rem}
-details{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1rem 1.15rem;margin:.7rem 0}
-summary{font-weight:800;cursor:pointer;color:var(--navy)}
-details p{color:var(--muted);margin-bottom:0}
-.cta{background:var(--navy);color:#fff;text-align:center}
-.cta .section-title{color:#fff}.cta p{color:#dbe8ee;max-width:700px;margin:0 auto 1.4rem}
-.resource-list{display:grid;gap:.8rem;margin-top:1.5rem}
-.resource{background:#fff;border:1px solid var(--border);padding:1rem 1.15rem;border-radius:12px;text-decoration:none;display:flex;justify-content:space-between;gap:1rem;align-items:center}
-.resource:hover{border-color:var(--blue);transform:translateY(-1px)}
-footer{background:#102637;color:#c9d5da;padding:2.5rem 0;font-size:.92rem}
-footer strong{color:#fff}
-.disclaimer{font-size:.82rem;color:#9fb1b9;margin-top:1rem}
-@media(max-width:800px){
-  .hero-grid,.grid-3,.locations{grid-template-columns:1fr}
-  nav{display:none;position:absolute;top:74px;left:0;right:0;background:#fff;padding:1rem 4%;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--border)}
-  nav.open{display:flex}.menu-btn{display:block}
-  .hero{padding:4rem 0}.hero-card{display:none}
-  section{padding:3.6rem 0}
+
+.container{
+  width:min(1120px,92%);
+  margin:auto;
 }
 
-.alt .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.15rem;margin-top:2rem}
-.alt .grid .card{display:flex;flex-direction:column}
-.visual{width:100%;aspect-ratio:500/230;overflow:hidden;border-radius:12px;background:var(--sky);margin-bottom:1rem}
-.visual svg{display:block;width:100%;height:100%}
-.alt#directions{background:var(--sky)}
-.directions{margin-top:2rem;background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.4rem;box-shadow:0 8px 24px rgba(23,50,77,.05)}
-.directions h3{margin:.1rem 0 .5rem;color:var(--navy)}
-.directions p{color:var(--muted);margin:.25rem 0 1rem}
-.direction-actions{display:flex;flex-wrap:wrap;gap:.8rem}
-.table-wrap{overflow-x:auto}
-.table{width:100%;border-collapse:collapse;table-layout:fixed}
-.table th,.table td{padding:.8rem;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
-.table th{color:var(--navy);background:var(--sky)}
-.table th,.table td{width:50%}
-@media(max-width:800px){
-  .alt .grid{grid-template-columns:1fr}
+.topbar{
+  background:var(--navy);
+  color:#fff;
+  font-size:.9rem;
+  padding:.65rem 0;
+  text-align:center;
 }
 
-</style>
-<style>
-.direction-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
-.direction-fields label{display:flex;flex-direction:column;gap:.45rem;font-weight:700}
-.direction-fields input{width:100%;padding:.85rem 1rem;border:1px solid rgba(0,0,0,.18);border-radius:8px;font:inherit;background:#fff}
-@media (max-width:700px){.direction-fields{grid-template-columns:1fr}}
+header{
+  background:#fff;
+  position:sticky;
+  top:0;
+  z-index:20;
+  border-bottom:1px solid var(--border);
+}
+
+.nav{
+  min-height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+
+.brand{
+  font-weight:850;
+  text-decoration:none;
+  color:var(--navy);
+  font-size:1.08rem;
+  line-height:1.1;
+}
+
+.brand span{
+  display:block;
+  color:var(--gold);
+  font-size:.75rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-top:.25rem;
+}
+
+nav{
+  display:flex;
+  gap:1rem;
+  align-items:center;
+}
+
+nav a{
+  text-decoration:none;
+  font-size:.87rem;
+  font-weight:700;
+}
+
+nav a:hover{
+  color:var(--blue);
+}
+
+.menu-btn{
+  display:none;
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:10px;
+  padding:.6rem .75rem;
+  font-size:1rem;
+  cursor:pointer;
+}
+
+.hero{
+  background:
+    linear-gradient(135deg,rgba(23,50,77,.97),rgba(36,93,124,.91)),
+    radial-gradient(circle at 85% 20%,rgba(217,155,43,.28),transparent 25%);
+  color:#fff;
+  padding:5.5rem 0 4.8rem;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:3rem;
+  align-items:center;
+}
+
+.eyebrow{
+  color:var(--gold-light);
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  font-size:.78rem;
+  font-weight:800;
+}
+
+.hero h1{
+  font-size:clamp(2.8rem,6vw,5.2rem);
+  line-height:.98;
+  letter-spacing:-.045em;
+  margin:.6rem 0 .7rem;
+}
+
+.hero-subhead{
+  color:#ffd98e;
+  font-size:clamp(1.2rem,2.5vw,1.6rem);
+  font-weight:850;
+  margin:0 0 1.25rem;
+}
+
+.hero p{
+  font-size:1.15rem;
+  max-width:720px;
+  color:#e8f0f4;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.8rem;
+  margin-top:1.7rem;
+}
+
+.btn{
+  display:inline-block;
+  padding:.82rem 1.15rem;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:800;
+  border:2px solid transparent;
+  transition:.2s ease;
+  cursor:pointer;
+  font:inherit;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+.btn.primary{
+  background:var(--gold);
+  color:#172b38;
+}
+
+.btn.secondary{
+  border-color:#fff;
+  color:#fff;
+}
+
+.btn.dark{
+  background:var(--navy);
+  color:#fff;
+}
+
+.hero-card{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:20px;
+  padding:1.6rem;
+  backdrop-filter:blur(8px);
+  box-shadow:0 20px 50px rgba(0,0,0,.12);
+}
+
+.hero-card .side-label{
+  color:var(--gold-light);
+  text-transform:uppercase;
+  font-size:.75rem;
+  font-weight:850;
+  letter-spacing:.1em;
+}
+
+.hero-card strong{
+  font-size:1.65rem;
+  line-height:1.15;
+  display:block;
+  color:#fff;
+  margin:.35rem 0 .9rem;
+}
+
+.hero-card p{
+  font-size:1rem;
+  margin:0;
+  color:#e8f0f4;
+}
+
+section{
+  padding:4.8rem 0;
+}
+
+.section-title{
+  font-size:clamp(2rem,4vw,3.2rem);
+  line-height:1.08;
+  color:var(--navy);
+  margin:0 0 .8rem;
+  letter-spacing:-.035em;
+}
+
+.lead{
+  font-size:1.1rem;
+  color:var(--muted);
+  max-width:900px;
+  width:100%;
+}
+
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.15rem;
+  margin-top:2rem;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:1.4rem;
+  box-shadow:0 8px 24px rgba(23,50,77,.05);
+}
+
+.card h3{
+  margin:.2rem 0 .6rem;
+  color:var(--navy);
+}
+
+.card p{
+  color:var(--muted);
+  margin:0;
+}
+
+.icon{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:var(--sky);
+  display:grid;
+  place-items:center;
+  font-size:1.3rem;
+}
+
+.statement{
+  background:var(--sky);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.statement-box{
+  background:#fff;
+  border-left:6px solid var(--gold);
+  border-radius:14px;
+  padding:1.6rem;
+  box-shadow:var(--shadow);
+  font-size:1.22rem;
+  font-weight:650;
+}
+
+.alt{
+  background:#fff;
+}
+
+.alt .grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.15rem;
+  margin-top:2rem;
+}
+
+.alt .grid .card{
+  display:flex;
+  flex-direction:column;
+}
+
+.visual{
+  width:100%;
+  aspect-ratio:500/230;
+  overflow:hidden;
+  border-radius:12px;
+  background:var(--sky);
+  margin-bottom:1rem;
+}
+
+.visual svg{
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+#why-oppose{
+  background:#f7f8f6;
+}
+
+.reason-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.15rem;
+  margin-top:2rem;
+}
+
+.reason-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:1.45rem;
+  box-shadow:0 8px 24px rgba(23,50,77,.05);
+}
+
+.reason-card.full{
+  grid-column:1 / -1;
+}
+
+.reason-number{
+  display:inline-grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:var(--navy);
+  color:#fff;
+  font-weight:850;
+  margin-bottom:.75rem;
+}
+
+.reason-card h3{
+  color:var(--navy);
+  margin:.1rem 0 .65rem;
+  font-size:1.25rem;
+  line-height:1.25;
+}
+
+.reason-card p{
+  color:var(--muted);
+  margin:.6rem 0;
+}
+
+.reason-card ul{
+  color:var(--muted);
+  margin:.8rem 0;
+  padding-left:1.25rem;
+}
+
+.reason-card li{
+  margin:.35rem 0;
+}
+
+.callout{
+  margin-top:1rem;
+  background:var(--sky);
+  border-left:4px solid var(--gold);
+  border-radius:10px;
+  padding:.9rem 1rem;
+  color:var(--navy);
+  font-weight:800;
+}
+
+.callout.red{
+  background:#fff2ef;
+  border-left-color:var(--red);
+}
+
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:.8rem;
+  margin:1.1rem 0;
+}
+
+.stat{
+  background:#f7f8f6;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:1rem;
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  font-size:1.65rem;
+  color:var(--navy);
+  line-height:1.1;
+}
+
+.stat span{
+  display:block;
+  color:var(--muted);
+  font-size:.85rem;
+  margin-top:.35rem;
+}
+
+.math-note{
+  font-size:.82rem;
+  color:var(--muted);
+  margin-top:.8rem;
+}
+
+.locations{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1rem;
+  margin-top:2rem;
+}
+
+.location{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:1.15rem;
+  display:flex;
+  gap:1rem;
+}
+
+.location h3{
+  color:var(--navy);
+  margin:.1rem 0 .35rem;
+}
+
+.location p{
+  color:var(--muted);
+  margin:0;
+}
+
+.number{
+  flex:0 0 38px;
+  height:38px;
+  border-radius:50%;
+  background:var(--navy);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-weight:800;
+}
+
+.note{
+  font-size:.86rem;
+  color:var(--muted);
+  margin-top:1.4rem;
+}
+
+.route-section{
+  background:var(--sky);
+}
+
+.directions{
+  margin-top:2rem;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:1.4rem;
+  box-shadow:0 8px 24px rgba(23,50,77,.05);
+}
+
+.directions h3{
+  margin:.1rem 0 .5rem;
+  color:var(--navy);
+}
+
+.directions p{
+  color:var(--muted);
+  margin:.25rem 0 1rem;
+}
+
+.direction-fields{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem;
+  margin-bottom:1rem;
+}
+
+.direction-fields label{
+  display:flex;
+  flex-direction:column;
+  gap:.45rem;
+  font-weight:700;
+  color:var(--navy);
+}
+
+.direction-fields input{
+  width:100%;
+  padding:.85rem 1rem;
+  border:1px solid rgba(0,0,0,.18);
+  border-radius:8px;
+  font:inherit;
+  background:#fff;
+}
+
+.direction-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.8rem;
+}
+
+.route-warning{
+  background:#fff8e8;
+  border:1px solid #ead6a8;
+  border-radius:12px;
+  padding:1rem;
+  margin-top:1rem;
+  color:#634b1a;
+  font-size:.9rem;
+}
+
+.questions{
+  background:#fff;
+}
+
+.faq{
+  margin-top:1.7rem;
+}
+
+details{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:1rem 1.15rem;
+  margin:.7rem 0;
+}
+
+summary{
+  font-weight:800;
+  cursor:pointer;
+  color:var(--navy);
+}
+
+details p{
+  color:var(--muted);
+  margin-bottom:0;
+}
+
+.cta{
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+}
+
+.cta .section-title{
+  color:#fff;
+}
+
+.cta p{
+  color:#dbe8ee;
+  max-width:700px;
+  margin:0 auto 1.4rem;
+}
+
+.resource-list{
+  display:grid;
+  gap:.8rem;
+  margin-top:1.5rem;
+}
+
+.resource{
+  background:#fff;
+  border:1px solid var(--border);
+  padding:1rem 1.15rem;
+  border-radius:12px;
+  text-decoration:none;
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  align-items:center;
+  transition:.2s ease;
+}
+
+.resource:hover{
+  border-color:var(--blue);
+  transform:translateY(-1px);
+}
+
+.contact-section{
+  background:#fff;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  margin-top:1.5rem;
+}
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+}
+
+.table th,
+.table td{
+  padding:.8rem;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+
+.table th{
+  color:var(--navy);
+  background:var(--sky);
+}
+
+.table th,
+.table td{
+  width:50%;
+}
+
+footer{
+  background:#102637;
+  color:#c9d5da;
+  padding:2.5rem 0;
+  font-size:.92rem;
+}
+
+footer strong{
+  color:#fff;
+}
+
+.disclaimer{
+  font-size:.82rem;
+  color:#9fb1b9;
+  margin-top:1rem;
+}
+
+@media(max-width:1050px){
+  nav{
+    gap:.7rem;
+  }
+
+  nav a{
+    font-size:.8rem;
+  }
+}
+
+@media(max-width:900px){
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-card{
+    max-width:700px;
+  }
+}
+
+@media(max-width:800px){
+  .hero-grid,
+  .grid-3,
+  .locations,
+  .reason-grid,
+  .alt .grid{
+    grid-template-columns:1fr;
+  }
+
+  .reason-card.full{
+    grid-column:auto;
+  }
+
+  nav{
+    display:none;
+    position:absolute;
+    top:74px;
+    left:0;
+    right:0;
+    background:#fff;
+    padding:1rem 4%;
+    flex-direction:column;
+    align-items:flex-start;
+    border-bottom:1px solid var(--border);
+    box-shadow:0 12px 25px rgba(23,50,77,.08);
+  }
+
+  nav.open{
+    display:flex;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .hero{
+    padding:4rem 0;
+  }
+
+  .hero-card{
+    display:block;
+  }
+
+  section{
+    padding:3.6rem 0;
+  }
+}
+
+@media(max-width:700px){
+  .direction-fields{
+    grid-template-columns:1fr;
+  }
+
+  .stat-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:clamp(2.7rem,13vw,4rem);
+  }
+
+  .actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .actions .btn{
+    text-align:center;
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="topbar">University Park residents deserve safe streets, transparent decisions, and meaningful public input.</div>
+
+<div class="topbar">
+  University Park residents deserve safe streets, transparent decisions, and meaningful public input.
+</div>
 
 <header>
   <div class="container nav">
-    <a class="brand" href="#top">KEEP UNIVERSITY PARK CONNECTED<span>University Park, Maryland</span></a>
-    <button class="menu-btn" aria-label="Open navigation" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+
+    <a class="brand" href="#top">
+      KEEP UNIVERSITY PARK CONNECTED
+      <span>University Park, Maryland</span>
+    </a>
+
+    <button
+      class="menu-btn"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      onclick="toggleNav()">
+      ☰
+    </button>
+
     <nav>
-      <a href="#survey">Resident Survey</a>
-      <a href="#why">Why It Matters</a>
+      <a href="#why-oppose">Why We Oppose</a>
       <a href="#alternatives">Alternatives</a>
-       <a href="#directions">Map Your Route</a>
+      <a href="#route-impact">Route Impacts</a>
+      <a href="#survey">Survey</a>
       <a href="#questions">Questions</a>
       <a href="#resources">Resources</a>
+      <a href="#contact">Officials</a>
       <a href="#act">Get Involved</a>
     </nav>
+
   </div>
 </header>
 
+
 <main id="top">
+
+<!-- HERO -->
 <section class="hero">
   <div class="container hero-grid">
+
     <div>
-      <div class="eyebrow">A community conversation about our streets</div>
-      <h1>Safer streets.<br>Connected neighborhood.</h1>
-      <p>University Park can pursue effective traffic-safety solutions without unnecessarily limiting access to our neighborhood. We support transparent, data-driven decisions and meaningful opportunities for residents to be heard.</p>
+      <div class="eyebrow">
+        A community conversation about our streets
+      </div>
+
+      <h1>
+        Keep University Park Connected
+      </h1>
+
+      <div class="hero-subhead">
+        Keep UP Diverter-Free
+      </div>
+
+      <p>
+        University Park can pursue effective traffic-safety solutions without
+        unnecessarily limiting access to our neighborhood. We support
+        transparent, data-driven decisions and meaningful opportunities for
+        residents to be heard.
+      </p>
+
       <div class="actions">
-        <a class="btn primary" href="https://forms.gle/tjprNKDnFsKsmpeRA" target="_blank" rel="noopener">Take the Survey</a>
-        <a class="btn secondary" href="https://www.change.org/p/keep-up-connected-stop-plans-for-disruptive-traffic-diverters-in-up">Sign the Petition</a>
+
+        <a
+          class="btn primary"
+          href="https://forms.gle/tjprNKDnFsKsmpeRA"
+          target="_blank"
+          rel="noopener">
+          Take the Survey
+        </a>
+
+        <a
+          class="btn secondary"
+          href="https://www.change.org/p/keep-up-connected-stop-plans-for-disruptive-traffic-diverters-in-up"
+          target="_blank"
+          rel="noopener">
+          Sign the Petition
+        </a>
+
       </div>
     </div>
+
+
     <aside class="hero-card">
-      <strong>Safety + access</strong>
-      <p>These goals do not have to be in conflict. Residents should understand the options, the data, and the potential consequences before major street changes are implemented.</p>
+
+      <div class="side-label">
+        Why this site exists
+      </div>
+
+      <strong>
+        Keep UP Diverter-Free
+      </strong>
+
+      <p>
+        This website is intended to help University Park residents understand
+        how traffic diverters will affect their daily lives, review public
+        information, and more meaningfully participate in decisions affecting
+        our neighborhood streets.
+      </p>
+
     </aside>
+
   </div>
 </section>
-<section id="why">
+
+
+<!-- SAFER STREETS -->
+<section>
+
   <div class="container">
-    <div class="eyebrow" style="color:var(--gold)">Our position</div>
-    <h2 class="section-title">We can support traffic safety without supporting every traffic-control proposal.</h2>
-    <p class="lead">This website is intended to help University Park residents follow the discussion around traffic diverters and other traffic-control concepts, review public information, and participate in decisions affecting neighborhood streets.</p>
+
+    <div class="eyebrow" style="color:var(--gold)">
+      Our position
+    </div>
+
+    <h2 class="section-title">
+      Safer Streets. A Connected Neighborhood.
+    </h2>
+
+    <p class="lead">
+      These goals do not have to be in conflict. Residents should understand
+      the options, the data, and the potential consequences before major street
+      changes are implemented.
+    </p>
+
+    <p class="lead">
+      University Park can pursue effective traffic-safety solutions without
+      unnecessarily limiting access to our neighborhood. We support transparent,
+      data-driven decisions and meaningful opportunities for residents to be heard.
+    </p>
+
     <div class="grid-3">
-      <article class="card"><div class="icon">🗣️</div><h3>Meaningful public input</h3><p>Residents should have clear opportunities to understand proposals and share their perspectives before major changes move forward.</p></article>
-      <article class="card"><div class="icon">📊</div><h3>Data-driven decisions</h3><p>Traffic interventions should be evaluated using clear data, stated goals, and measurable results.</p></article>
-      <article class="card"><div class="icon">🔄</div><h3>Consider all impacts</h3><p>A change that improves one intersection may affect nearby streets. Those potential impacts deserve careful consideration.</p></article>
+
+      <article class="card">
+        <div class="icon">🗣️</div>
+        <h3>Meaningful public input</h3>
+        <p>
+          Residents should have clear opportunities to understand proposals,
+          ask questions, and share their perspectives before major changes
+          move forward.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">📊</div>
+        <h3>Data-driven decisions</h3>
+        <p>
+          Traffic interventions should be evaluated using clear data, stated
+          goals, and measurable results—not assumptions about how drivers
+          might behave.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🔄</div>
+        <h3>Consider all impacts</h3>
+        <p>
+          A change that improves one intersection may affect nearby streets,
+          residents, schools, businesses, and daily travel. Those effects
+          deserve careful consideration.
+        </p>
+      </article>
+
     </div>
+
+  </div>
+
+</section>
+
+
+<!-- WHY WE OPPOSE DIVERTERS -->
+<section id="why-oppose">
+
+  <div class="container">
+
+    <div class="eyebrow" style="color:var(--gold)">
+      Why we oppose diverters
+    </div>
+
+    <h2 class="section-title">
+      A connected town deserves a thoughtful traffic-safety plan.
+    </h2>
+
+    <p class="lead">
+      We support safer streets. We oppose using permanent traffic diverters
+      when the costs, effectiveness, alternatives, and consequences for
+      University Park residents have not been fully demonstrated.
+    </p>
+
+
+    <div class="reason-grid">
+
+      <!-- POINT 1 -->
+      <article class="reason-card">
+
+        <div class="reason-number">1</div>
+
+        <h3>
+          More than a minor inconvenience, diverters push real, measurable
+          costs onto many residents.
+        </h3>
+
+        <p>
+          Some may argue that it is neighborly to spend “a couple of extra
+          minutes” on a driving route. But for people who commute on these
+          routes every day, those extra minutes add up to unacceptable
+          negative impacts.
+        </p>
+
+        <p>
+          We drove the route. Diverting traffic at the Clagett-Pineway
+          intersection to eliminate the straight-line commute between Queens
+          Chapel and Adelphi adds approximately 2.5–3 minutes one way,
+          or 5–6 minutes round trip, based on the route tested.
+        </p>
+
+        <div class="stat-grid">
+
+          <div class="stat">
+            <strong>5–6 min.</strong>
+            <span>additional round-trip time</span>
+          </div>
+
+          <div class="stat">
+            <strong>25–30 min.</strong>
+            <span>additional time each 5-day week</span>
+          </div>
+
+          <div class="stat">
+            <strong>~22–26 hrs.</strong>
+            <span>additional driving over 260 workdays</span>
+          </div>
+
+        </div>
+
+        <p>
+          Over a five-day work week, that is roughly a half-hour of additional
+          commuting time. Over a month, it can approach two hours. Over a year
+          of weekday commuting, the cumulative cost can become an entire day
+          of life spent driving around our town.
+        </p>
+
+        <p>
+          And that is for one person making one daily round trip. Multiply
+          that by the number of family members who use the route, and the
+          costs become very clear—and unacceptable.
+        </p>
+
+        <div class="callout">
+          Pushing back against diverters is not being a bad neighbor; it is
+          being protective of your family's valuable time and money.
+        </div>
+
+        <p class="math-note">
+          Time estimates above use the stated 2.5–3 minute one-way route
+          increase and a 260-workday year. Actual impacts will vary by driver,
+          time of day, route, and traffic conditions.
+        </p>
+
+      </article>
+
+
+      <!-- POINT 2 -->
+      <article class="reason-card">
+
+        <div class="reason-number">2</div>
+
+        <h3>
+          People should drive on the roads that were designed to handle the traffic.
+        </h3>
+
+        <p>
+          Clagett Road was designed to handle the traffic that flows from
+          Adelphi to Queens Chapel. If you have ever gotten the impression
+          that Woodberry is a narrower road than Clagett, you were right.
+        </p>
+
+        <p>
+          We measured. Clagett Road is approximately 1/2 foot wider than
+          Woodberry. Moreover, Clagett only has parking on one side of the road.
+          Both factors allow traffic in both directions to move more smoothly
+          through Clagett.
+        </p>
+
+        <div class="callout">
+          Our roads were designed the way they were for a reason.
+        </div>
+
+      </article>
+
+
+      <!-- POINT 3 -->
+      <article class="reason-card">
+
+        <div class="reason-number">3</div>
+
+        <h3>
+          Diverters are a reactive, long-term solution to yesterday's temporary problem.
+        </h3>
+
+        <p>
+          We all felt the pain of Purple Line construction at the intersection
+          of Adelphi Road and Route 193. During construction, more cars than
+          usual came through town.
+        </p>
+
+        <p>
+          But with that construction completed, even residents who live near
+          the exits to Route 1 acknowledge that traffic coming through town
+          has lessened.
+        </p>
+
+        <p>
+          Why pursue a dramatic redesign of town roads, with inconvenience
+          and unintended consequences for many residents, to solve a problem
+          that has already changed with the end of construction?
+        </p>
+
+        <div class="callout">
+          Before making a permanent change, we should make sure we are solving
+          today's problem—not yesterday's.
+        </div>
+
+      </article>
+
+
+      <!-- POINT 4 -->
+      <article class="reason-card">
+
+        <div class="reason-number">4</div>
+
+        <h3>
+          Moving forward with diverters can become a sunk-cost fallacy.
+        </h3>
+
+        <p>
+          The Town invested considerable money and time studying traffic from
+          the end of 2024 into 2025. That money has been spent—and it cannot
+          be recovered.
+        </p>
+
+        <p>
+          It is human nature to want something to come out of money already
+          spent. But past spending should not determine today's decision if
+          circumstances have materially changed.
+        </p>
+
+        <p>
+          The right question is not, “How do we make use of the study we
+          already paid for?” The right question is, “Given what we know today,
+          what solution best serves University Park?”
+        </p>
+
+        <p>
+          Past Town Councils and Mayors have also studied traffic and
+          transportation issues in University Park. That history is useful
+          context, but it should not create an obligation to pursue a solution
+          simply because the issue has been studied before.
+        </p>
+
+        <div class="callout">
+          Good decision-making looks forward. Past spending should not dictate
+          future policy.
+        </div>
+
+      </article>
+
+
+      <!-- POINT 5 -->
+      <article class="reason-card">
+
+        <div class="reason-number">5</div>
+
+        <h3>
+          Is it really cheaper?
+        </h3>
+
+        <p>
+          A traffic diverter may look inexpensive when its price is compared
+          only with the construction cost of another traffic-calming project.
+          But the full cost of a transportation decision is broader.
+        </p>
+
+        <p>
+          Residents also bear the cost of additional driving time, additional
+          fuel consumption, changed routes, potential congestion on neighboring
+          streets, and the inconvenience of navigating around barriers every
+          day.
+        </p>
+
+        <p>
+          Those costs deserve to be included when alternatives are compared.
+        </p>
+
+        <div class="callout">
+          A project is not truly “cheaper” if it simply shifts the costs onto
+          hundreds of residents.
+        </div>
+
+      </article>
+
+
+      <!-- POINT 6 -->
+      <article class="reason-card">
+
+        <div class="reason-number">6</div>
+
+        <h3>
+          Diverters have different impacts depending on where you live.
+        </h3>
+
+        <p>
+          A town-wide discussion should not treat every resident's travel
+          experience as identical. A diverter at one connection can have very
+          different consequences for residents in different parts of town.
+        </p>
+
+        <p>
+          Residents should be able to see how proposed changes affect common
+          trips such as:
+        </p>
+
+        <ul>
+          <li>Getting from Queens Chapel toward Adelphi and Route 1.</li>
+          <li>Traveling between the northern and southern parts of town.</li>
+          <li>Getting to schools, churches, groceries, and other destinations.</li>
+          <li>Reaching Route 1 without being redirected onto narrower streets.</li>
+          <li>Returning home from work or errands during peak traffic.</li>
+        </ul>
+
+        <div class="callout">
+          Before approving diverters, show residents the route-by-route impacts
+          for every ward—not just the expected traffic reduction at the
+          intersection being changed.
+        </div>
+
+      </article>
+
+
+      <!-- POINT 7 -->
+      <article class="reason-card">
+
+        <div class="reason-number">7</div>
+
+        <h3>
+          We are not a gated community. Why are we trying to become a de facto one?
+        </h3>
+
+        <p>
+          One of the stated goals of the traffic subcommittee is to
+          “improve the atmosphere” of the Town.
+        </p>
+
+        <p>
+          We think a good atmosphere is a welcoming atmosphere—not one that
+          sets up barriers to our neighbors in College Heights Estates,
+          Calvert Hills, and beyond.
+        </p>
+
+        <p>
+          University Park is not a community of elitists. We welcome others.
+          People from outside town come through University Park for many
+          reasons: to attend University Park Elementary and Northwestern High,
+          to worship, to shop for their families at Trader Joe's and Whole
+          Foods, and to visit family and friends.
+        </p>
+
+        <div class="callout">
+          What does setting up barriers to our neighbors say about us as a town?
+        </div>
+
+      </article>
+
+
+      <!-- POINT 8 -->
+      <article class="reason-card">
+
+        <div class="reason-number">8</div>
+
+        <h3>
+          We do not actually know how the mapping algorithms will respond.
+        </h3>
+
+        <p>
+          One of the main arguments for diverters is that adding time to the
+          route through town will cause Waze, Google Maps, and other navigation
+          apps to stop routing people through University Park.
+        </p>
+
+        <p>
+          That is an assumption. We do not control the algorithms, and we
+          cannot force private mapping companies to stop routing drivers over
+          public streets.
+        </p>
+
+        <p>
+          If adding a couple of minutes to a route through town still makes it
+          shorter than alternatives—such as traveling from Adelphi to Route
+          410 and then up to Route 1—drivers may continue to use the route.
+        </p>
+
+        <p>
+          In other words, diverters may depend in part on a prediction about
+          how navigation systems will behave. What is not a prediction is
+          that residents forced to take longer routes will spend more time
+          driving.
+        </p>
+
+        <p>
+          Ironically, making residents drive longer may increase traffic within
+          town by putting more resident trips onto longer and potentially more
+          complicated routes.
+        </p>
+
+        <div class="callout">
+          Facts, not feelings, must drive our decisions.
+        </div>
+
+      </article>
+
+
+      <!-- POINT 9 -->
+      <article class="reason-card">
+
+        <div class="reason-number">9</div>
+
+        <h3>
+          Traffic volume is not the same as unsafe driving.
+        </h3>
+
+        <p>
+          Speeding, blowing through stop signs, tailgating, and other unsafe
+          driver behaviors should be addressed with measures that target those
+          behaviors.
+        </p>
+
+        <p>
+          Trying to keep “outsiders” out will not necessarily stop dangerous
+          driving. It may, however, make residents spend longer on the roads.
+        </p>
+
+        <p>
+          It may also encourage drivers to choose less safe routes. For
+          example, accessing Adelphi Road from Tennyson Road—where there is a
+          curve and no traffic light—could become more attractive than using
+          the safer exit at the light at Wells Parkway.
+        </p>
+
+        <p>
+          The Town's materials identify several traffic-calming approaches.
+          Residents should be allowed to weigh their costs, safety benefits,
+          and unintended impacts.
+        </p>
+
+        <div class="callout">
+          Target dangerous behavior directly instead of assuming that
+          restricting access will make streets safer.
+        </div>
+
+      </article>
+
+
+      <!-- POINT 10 -->
+      <article class="reason-card">
+
+        <div class="reason-number">10</div>
+
+        <h3>
+          Diverters divide our town—in more ways than one.
+        </h3>
+
+        <p>
+          We have heard a “fairness” argument: because Queens Chapel was
+          closed, residents at other exit points in town should be allowed to
+          limit access to their own roads as well.
+        </p>
+
+        <p>
+          But Queens Chapel Road bisects the town. Closing it had the effect
+          of allowing residents to cross from one side of town to the other
+          more easily and more safely.
+        </p>
+
+        <p>
+          Diverters do the opposite. They can turn straightforward daily
+          routes into complicated trips around barriers.
+        </p>
+
+        <div class="callout">
+          A connected town should not solve one connection problem by creating
+          a maze of disconnected routes elsewhere.
+        </div>
+
+      </article>
+
+
+      <!-- POINT 11 -->
+      <article class="reason-card">
+
+        <div class="reason-number">11</div>
+
+        <h3>
+          Residents deserve clear opportunities to understand proposals and share their perspectives.
+        </h3>
+
+        <p>
+          Recent listserv discussions do not tell the whole story, but they
+          provide a picture of significant concern about proposed diverters.
+          We have seen an underlying theme of surprise and dismay at the
+          proposals, along with a clear desire to give input.
+        </p>
+
+        <p>
+          A circulating petition against diverters has already gathered
+          several hundred signatures.
+        </p>
+
+        <p>
+          Residents should not have to search through old meeting minutes or
+          learn about major proposals by chance. We call on elected
+          representatives to proactively solicit constituent feedback and make
+          decisions in response to what the community wants.
+        </p>
+
+        <div class="callout">
+          Hear our voices.
+        </div>
+
+      </article>
+
+    </div>
+
   </div>
 </section>
+
+
+<!-- ALTERNATIVES -->
 <section class="alt" id="alternatives">
-<div class="container">
-<h2>Alternatives worth evaluating</h2>
-<p class="lead">The Town's materials identify several traffic-control and calming approaches. Residents can ask the Town to compare their costs, safety benefits and unintended impacts before relying on permanent diverters.</p>
-<div class="grid">
-<div class="card"><div class="visual"><svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg"><rect width="500" height="230" fill="#dce7ea"/><rect y="82" width="500" height="82" fill="#656b70"/><path d="M40 123h420" stroke="#e8c55c" stroke-width="5" stroke-dasharray="22 18"/><path d="M205 160q45-70 90 0" fill="#a8b1b5" stroke="#fff" stroke-width="4"/><rect x="335" y="42" width="45" height="45" fill="#fff" stroke="#d45c45" stroke-width="6"/><text x="347" y="73" font-size="28" font-family="Arial" fill="#123047">20</text></svg></div><h3>Speed management</h3><p>Use targeted speed humps, raised treatments and other proven designs where speeding is documented, rather than closing a key connection for all drivers.</p></div>
-<div class="card"><div class="visual"><svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg"><rect width="500" height="230" fill="#e9f0e6"/><rect y="82" width="500" height="82" fill="#6a7075"/><path d="M0 123h500" stroke="#fff" stroke-width="4" stroke-dasharray="18 15"/><rect x="110" y="34" width="120" height="70" rx="5" fill="#fff" stroke="#123047" stroke-width="7"/><path d="M135 76h70M170 50v52" stroke="#e56b3f" stroke-width="8"/><rect x="310" y="34" width="90" height="70" rx="5" fill="#fff" stroke="#123047" stroke-width="7"/><text x="326" y="78" font-size="24" font-family="Arial">LOCAL</text></svg></div><h3>Targeted signage and restrictions</h3><p>Improve route guidance and test time-specific or location-specific controls where appropriate, with careful monitoring before making permanent changes.</p></div>
-<div class="card"><div class="visual"><svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg"><rect width="500" height="230" fill="#e6edf1"/><path d="M40 185H460" stroke="#666e73" stroke-width="55"/><path d="M250 45v145" stroke="#555e64" stroke-width="55"/><path d="M40 185H460M250 45v145" stroke="#e9c963" stroke-width="4" stroke-dasharray="15 14"/><circle cx="250" cy="140" r="20" fill="#123047"/><path d="M80 45v95M120 45v95M160 45v95M300 45v95M340 45v95M380 45v95M420 45v95" stroke="#fff" stroke-width="6"/></svg></div><h3>Enforcement and safer intersections</h3><p>Focus enforcement on documented stop-sign violations and speeding, and improve crossings and intersections for pedestrians and cyclists without severing neighborhood routes.</p></div>
-</div>
-</div>
+
+  <div class="container">
+
+    <div class="eyebrow" style="color:var(--gold)">
+      Solutions worth evaluating
+    </div>
+
+    <h2 class="section-title">
+      Safer streets do not require permanent diverters.
+    </h2>
+
+    <p class="lead">
+      The Town's materials identify several traffic-control and calming
+      approaches. Residents should be able to compare their costs, safety
+      benefits, and unintended impacts before relying on permanent diverters.
+    </p>
+
+    <div class="grid">
+
+      <article class="card">
+
+        <div class="visual">
+          <svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg">
+            <rect width="500" height="230" fill="#dce7ea"/>
+            <rect y="82" width="500" height="82" fill="#656b70"/>
+            <path d="M40 123h420" stroke="#e8c55c" stroke-width="5" stroke-dasharray="22 18"/>
+            <path d="M205 160q45-70 90 0" fill="#a8b1b5" stroke="#fff" stroke-width="4"/>
+            <rect x="335" y="42" width="45" height="45" fill="#fff" stroke="#d45c45" stroke-width="6"/>
+            <text x="347" y="73" font-size="28" font-family="Arial" fill="#123047">20</text>
+          </svg>
+        </div>
+
+        <h3>Speed management</h3>
+
+        <p>
+          Use targeted speed humps, raised treatments, and other proven
+          designs where speeding is documented rather than closing a key
+          connection for all drivers.
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="visual">
+          <svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg">
+            <rect width="500" height="230" fill="#e9f0e6"/>
+            <rect y="82" width="500" height="82" fill="#6a7075"/>
+            <path d="M0 123h500" stroke="#fff" stroke-width="4" stroke-dasharray="18 15"/>
+            <rect x="110" y="34" width="120" height="70" rx="5" fill="#fff" stroke="#123047" stroke-width="7"/>
+            <path d="M135 76h70M170 50v52" stroke="#e56b3f" stroke-width="8"/>
+            <rect x="310" y="34" width="90" height="70" rx="5" fill="#fff" stroke="#123047" stroke-width="7"/>
+            <text x="326" y="78" font-size="24" font-family="Arial">LOCAL</text>
+          </svg>
+        </div>
+
+        <h3>Targeted signage and restrictions</h3>
+
+        <p>
+          Improve route guidance and test time-specific or location-specific
+          controls where appropriate, with careful monitoring before making
+          permanent changes.
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="visual">
+          <svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg">
+            <rect width="500" height="230" fill="#e6edf1"/>
+            <path d="M40 185H460" stroke="#666e73" stroke-width="55"/>
+            <path d="M250 45v145" stroke="#555e64" stroke-width="55"/>
+            <path d="M40 185H460M250 45v145" stroke="#e9c963" stroke-width="4" stroke-dasharray="15 14"/>
+            <circle cx="250" cy="140" r="20" fill="#123047"/>
+            <path d="M80 45v95M120 45v95M160 45v95M300 45v95M340 45v95M380 45v95M420 45v95" stroke="#fff" stroke-width="6"/>
+          </svg>
+        </div>
+
+        <h3>Enforcement and safer intersections</h3>
+
+        <p>
+          Focus enforcement on documented stop-sign violations and speeding,
+          and improve crossings and intersections for pedestrians and cyclists
+          without severing neighborhood routes.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
 </section>
 
 
+<!-- ROUTE IMPACTS -->
+<section class="route-section" id="route-impact">
 
+  <div class="container">
+
+    <div class="eyebrow" style="color:var(--gold)">
+      Put residents' routes first
+    </div>
+
+    <h2 class="section-title">
+      What will a diverter mean for your daily route?
+    </h2>
+
+    <p class="lead">
+      The impact of a diverter depends on where you live, where you are going,
+      and which connections you normally use. Residents deserve to see those
+      impacts clearly before a permanent change is made.
+    </p>
+
+
+    <div class="locations">
+
+      <div class="location">
+
+        <div class="number">1</div>
+
+        <div>
+          <h3>Route 1 / Adelphi access</h3>
+          <p>
+            How will residents traveling between University Park and Adelphi,
+            Route 1, or nearby destinations be redirected?
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="location">
+
+        <div class="number">2</div>
+
+        <div>
+          <h3>Queens Chapel connections</h3>
+          <p>
+            What additional turns or travel time will be required for residents
+            using Queens Chapel and nearby connections?
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="location">
+
+        <div class="number">3</div>
+
+        <div>
+          <h3>Woodberry and neighboring streets</h3>
+          <p>
+            Could traffic shift onto narrower residential streets or streets
+            with different pedestrian and intersection conditions?
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="location">
+
+        <div class="number">4</div>
+
+        <div>
+          <h3>Cross-town trips</h3>
+          <p>
+            How will a diverter affect residents who need to travel from one
+            part of University Park to another?
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="directions">
+
+      <h3>
+        Map a route around the proposed Clagett-Pineway connection
+      </h3>
+
+      <p>
+        Enter a starting point and destination to see a Google Maps route
+        that uses two waypoints intended to steer the route around the
+        Clagett Road / Pineway connection.
+      </p>
+
+      <form id="directions-form">
+
+        <div class="direction-fields">
+
+          <label>
+            Starting point
+            <input
+              id="start-address"
+              name="start"
+              type="text"
+              placeholder="Example: University Park, MD"
+              autocomplete="street-address"
+              required>
+          </label>
+
+          <label>
+            Destination
+            <input
+              id="destination-address"
+              name="destination"
+              type="text"
+              placeholder="Example: Route 1, College Park"
+              required>
+          </label>
+
+        </div>
+
+        <div class="direction-actions">
+
+          <button class="btn dark" type="submit">
+            Map This Route
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <div class="route-warning">
+        <strong>Important:</strong>
+        Google Maps does not provide a direct way for this page to mark a
+        specific proposed road closure as closed. The route tool therefore
+        uses waypoints to encourage a route around the Clagett-Pineway
+        connection. Actual routing may vary depending on current traffic,
+        map data, and Google's routing algorithms.
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- COMMUNITY FEEDBACK -->
 <section id="survey">
+
   <div class="container">
-    <div class="eyebrow" style="color:var(--gold)">Community feedback</div>
-    <h2 class="section-title">Help us understand your concerns and priorities.</h2>
-    <p class="lead">Your input is valuable as we work to improve traffic safety and accessibility in University Park.</p>
-    <p class="lead">Take the survey to share your thoughts and experiences. Sign the petition to express your view on the proposed changes.</p>
+
+    <div class="eyebrow" style="color:var(--gold)">
+      Community feedback
+    </div>
+
+    <h2 class="section-title">
+      Help us understand your concerns and priorities.
+    </h2>
+
+    <p class="lead">
+      Your input is valuable as we work to improve traffic safety and
+      accessibility in University Park.
+    </p>
+
+    <p class="lead">
+      Take the survey to share your thoughts and experiences. Sign the
+      petition to express your view on the proposed changes.
+    </p>
+
     <div class="actions" style="justify-content:center">
-    <a class="btn primary" href="https://forms.gle/tjprNKDnFsKsmpeRA" target="_blank" rel="noopener">Resident Survey</a>
-    <a class="btn primary" href="https://www.change.org/p/keep-up-connected-stop-plans-for-disruptive-traffic-diverters-in-up" target="_blank" rel="noopener">Sign the Petition</a>
+
+      <a
+        class="btn primary"
+        href="https://forms.gle/tjprNKDnFsKsmpeRA"
+        target="_blank"
+        rel="noopener">
+        Resident Survey
+      </a>
+
+      <a
+        class="btn primary"
+        href="https://www.change.org/p/keep-up-connected-stop-plans-for-disruptive-traffic-diverters-in-up"
+        target="_blank"
+        rel="noopener">
+        Sign the Petition
+      </a>
+
     </div>
+
   </div>
 </section>
 
-<section id="resources">
-  <div class="container">
-    <div class="eyebrow" style="color:var(--gold)">Public information</div>
-    <h2 class="section-title">Town's Documents</h2>
-    <p class="lead">The best community discussion is based on primary sources.</p>
-    <div class="resource-list">
-      <a class="resource" href="https://upmd.org/190/Police-Traffic-Public-Safety-Committee-P" target="_blank" rel="noopener"><span><strong>Police, Traffic &amp; Public Safety Committee</strong><br>Committee role, current traffic-study documents, meetings, and agendas.</span><span>↗</span></a>
-      <a class="resource" href="https://www.upmd.org/396/Traffic-Studies-Reports-and-Data-Collect" target="_blank" rel="noopener"><span><strong>Traffic Studies, Reports &amp; Data</strong><br>Town page for additional traffic-study documents and resources.</span><span>↗</span></a>
-      <a class="resource" href="https://upmd.org/190/Police-Traffic-Public-Safety-Committee-P" target="_blank" rel="noopener"><span><strong>Meeting information</strong><br>Check the Town's PTPS page for current meeting and agenda information.</span><span>↗</span></a>
-    </div>
-  </div>
-</section>
 
-<section id="questions">
+<!-- QUESTIONS -->
+<section id="questions" class="questions">
+
   <div class="container">
-    <div class="eyebrow" style="color:var(--gold)">Questions worth asking</div>
-    <h2 class="section-title">Good public policy starts with clear answers.</h2>
+
+    <div class="eyebrow" style="color:var(--gold)">
+      Questions worth asking
+    </div>
+
+    <h2 class="section-title">
+      Good public policy starts with clear answers.
+    </h2>
+
+    <p class="lead">
+      Ask your council member. Ask the Town. Ask for the data.
+    </p>
+
+
     <div class="faq">
-      <details><summary>Will traffic simply move to another residential street?</summary><p>When access is restricted at one location, residents should understand how traffic patterns may change elsewhere and how those effects will be measured.</p></details>
-      <details><summary>What alternatives have been considered?</summary><p>Residents should be able to compare diverters with other approaches such as traffic calming, intersection improvements, enforcement, or other measures discussed in public materials.</p></details>
-      <details><summary>How will success be defined?</summary><p>Before implementation, the Town should clearly identify the safety and traffic outcomes it intends to achieve and how it will evaluate results.</p></details>
-      <details><summary>What opportunities will residents have to comment?</summary><p>Public meetings, committee discussions, agendas, minutes, and Council decisions should be easy for residents to find and follow.</p></details>
+
+      <details>
+        <summary>
+          Will traffic simply move to another residential street?
+        </summary>
+
+        <p>
+          When access is restricted at one location, residents should
+          understand how traffic patterns may change elsewhere and how those
+          effects will be measured.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>
+          What alternatives have been considered?
+        </summary>
+
+        <p>
+          Residents should be able to compare diverters with other approaches
+          such as traffic calming, intersection improvements, enforcement,
+          signage, targeted restrictions, or other measures discussed in
+          public materials.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>
+          How will success be defined?
+        </summary>
+
+        <p>
+          Before implementation, the Town should clearly identify the safety
+          and traffic outcomes it intends to achieve and explain how it will
+          evaluate results.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>
+          What opportunities will residents have to comment?
+        </summary>
+
+        <p>
+          Public meetings, committee discussions, agendas, minutes, and
+          Council decisions should be easy for residents to find and follow.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>
+          What current data shows that diverters are necessary?
+        </summary>
+
+        <p>
+          Residents should be able to review current traffic volumes, speeds,
+          crash information, and other relevant measures—not simply historical
+          conditions.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>
+          What happens if the diverters do not work?
+        </summary>
+
+        <p>
+          Before installation, the Town should explain what metrics will be
+          monitored, how long the trial will last, and what circumstances would
+          cause the Town to modify or remove the treatment.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>
+          Where will displaced traffic go?
+        </summary>
+
+        <p>
+          Residents should see before-and-after projections for surrounding
+          streets, including streets that could receive additional traffic.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>
+          How will emergency response be affected?
+        </summary>
+
+        <p>
+          Any permanent restriction should be evaluated for its effects on
+          police, fire, ambulance, utility, and other emergency or service
+          access.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>
+          How will schools, pedestrians, and cyclists be affected?
+        </summary>
+
+        <p>
+          Traffic changes should be evaluated for their effects on walking,
+          biking, school travel, crossings, and interactions between vehicles
+          and vulnerable road users.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>
+          What will residents actually gain compared with the alternatives?
+        </summary>
+
+        <p>
+          The Town should identify the measurable safety or quality-of-life
+          benefit expected from diverters and compare that benefit directly
+          with other available options.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>
+          Will residents have a meaningful opportunity to evaluate a pilot?
+        </summary>
+
+        <p>
+          If a traffic-control treatment is considered, residents should know
+          whether it can be tested temporarily, what data will be collected,
+          and how the public will participate in evaluating the results.
+        </p>
+      </details>
+
     </div>
+
   </div>
 </section>
 
+
+<!-- STATEMENT -->
 <section class="statement">
-  <div class="container">
-    <div class="statement-box">“Before permanent changes reshape how residents move through University Park, the community deserves clear information, meaningful input, and a full discussion of alternatives.”</div>
-  </div>
-</section>
 
-<section id="act" class="cta">
   <div class="container">
-    <div class="eyebrow">Get involved</div>
-    <h2 class="section-title">Stay informed. Ask questions. Participate.</h2>
-    <p>Community participation is strongest when residents have the information they need before decisions are finalized.</p>
-    <div class="actions" style="justify-content:center">
-      <a class="btn primary" href="https://upmd.org/190/Police-Traffic-Public-Safety-Committee-P" target="_blank" rel="noopener">Check PTPS information</a>
-      <a class="btn secondary" href="mailto:mgathercole@upmd.org">Contact PTPS</a>
-      <a class="btn primary" href="mailto:keepuniversityparkconnected@gmail.com" target="_blank" rel="noopener">Contact Keep University Park Connected</a>
-      <a class="btn secondary" href="https://www.upmd.org/198/Town-Council" target="_blank" rel="noopener">Contact Your Council Member</a>
+
+    <div class="statement-box">
+      “Before permanent changes reshape how residents move through University
+      Park, the community deserves clear information, meaningful input, and a
+      full discussion of alternatives.”
     </div>
+
   </div>
 </section>
-</main>
-<section class="alt" id="contact">
-<div class="container">
-<h2>Contact University Park's elected officials</h2>
-<p class="lead">The Town Council consists of Mayor Laurie Morrissey and seven Councilmembers representing the Town's wards. The PTPS Committee page lists Councilmembers Mary Gathercole, David McGaughey, Grant Godfrey, Craig Kussmaul and Kimberly Lopez among its members.</p>
-<div class="grid two">
-<div class="card">
-<table class="table">
-<thead><tr><th width="50%">Official</th><th>Representation</th></tr></thead>
-<tbody>
-<tr><td>Laurie Morrissey</td><td>Mayor</td></tr>
-<tr><td>Craig Kussmaul</td><td>Ward 1</td></tr>
-<tr><td>Mary Gathercole</td><td>Ward 2</td></tr>
-<tr><td>Casey Kelby</td><td>Ward 3</td></tr>
-<tr><td>Cynthia Mowery</td><td>Ward 4</td></tr>
-<tr><td>David McGaughey</td><td>Ward 5</td></tr>
-<tr><td>Grant Godfrey</td><td>Ward 6</td></tr>
-<tr><td>Kimberly Lopez</td><td>Ward 7</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<footer>
+
+
+<!-- RESOURCES -->
+<section id="resources">
+
   <div class="container">
-    <strong>Keep University Park Connected</strong><br>
-    A resident-focused website advocating for transparent, thoughtful, and community-informed traffic-safety decisions.
-    <p class="disclaimer">This is an independent community website and is not an official website of the Town of University Park. Information about Town proposals should be verified against official Town documents and announcements.</p>
+
+    <div class="eyebrow" style="color:var(--gold)">
+      Public information
+    </div>
+
+    <h2 class="section-title">
+      Town's Documents
+    </h2>
+
+    <p class="lead">
+      The best community discussion is based on primary sources.
+    </p>
+
+
+    <div class="resource-list">
+
+      <a
+        class="resource"
+        href="https://upmd.org/190/Police-Traffic-Public-Safety-Committee-P"
+        target="_blank"
+        rel="noopener">
+
+        <span>
+          <strong>Police, Traffic &amp; Public Safety Committee</strong><br>
+          Committee role, current traffic-study documents, meetings, and agendas.
+        </span>
+
+        <span>↗</span>
+
+      </a>
+
+
+      <a
+        class="resource"
+        href="https://www.upmd.org/396/Traffic-Studies-Reports-and-Data-Collect"
+        target="_blank"
+        rel="noopener">
+
+        <span>
+          <strong>Traffic Studies, Reports &amp; Data</strong><br>
+          Town page for additional traffic-study documents and resources.
+        </span>
+
+        <span>↗</span>
+
+      </a>
+
+
+      <a
+        class="resource"
+        href="https://upmd.org/190/Police-Traffic-Public-Safety-Committee-P"
+        target="_blank"
+        rel="noopener">
+
+        <span>
+          <strong>Meeting information</strong><br>
+          Check the Town's PTPS page for current meeting and agenda information.
+        </span>
+
+        <span>↗</span>
+
+      </a>
+
+    </div>
+
   </div>
+</section>
+
+
+<!-- GET INVOLVED -->
+<section id="act" class="cta">
+
+  <div class="container">
+
+    <div class="eyebrow">
+      Get involved
+    </div>
+
+    <h2 class="section-title">
+      Stay informed. Ask questions. Participate.
+    </h2>
+
+    <p>
+      Community participation is strongest when residents have the information
+      they need before decisions are finalized.
+    </p>
+
+
+    <div class="actions" style="justify-content:center">
+
+      <a
+        class="btn primary"
+        href="https://upmd.org/190/Police-Traffic-Public-Safety-Committee-P"
+        target="_blank"
+        rel="noopener">
+        Check PTPS Information
+      </a>
+
+      <a
+        class="btn secondary"
+        href="mailto:mgathercole@upmd.org">
+        Contact PTPS
+      </a>
+
+      <a
+        class="btn primary"
+        href="mailto:keepuniversityparkconnected@gmail.com">
+        Contact Keep University Park Connected
+      </a>
+
+      <a
+        class="btn secondary"
+        href="https://www.upmd.org/198/Town-Council"
+        target="_blank"
+        rel="noopener">
+        Contact Your Council Member
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ELECTED OFFICIALS -->
+<section class="contact-section" id="contact">
+
+  <div class="container">
+
+    <div class="eyebrow" style="color:var(--gold)">
+      Your elected representatives
+    </div>
+
+    <h2 class="section-title">
+      Contact University Park's elected officials
+    </h2>
+
+    <p class="lead">
+      The Town Council consists of Mayor Laurie Morrissey and seven
+      Councilmembers representing the Town's wards. Residents should have
+      clear opportunities to communicate directly with their elected
+      representatives about proposed traffic changes.
+    </p>
+
+
+    <div class="table-wrap">
+
+      <table class="table">
+
+        <thead>
+          <tr>
+            <th>Official</th>
+            <th>Representation</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>Laurie Morrissey</td>
+            <td>Mayor</td>
+          </tr>
+
+          <tr>
+            <td>Craig Kussmaul</td>
+            <td>Ward 1</td>
+          </tr>
+
+          <tr>
+            <td>Mary Gathercole</td>
+            <td>Ward 2</td>
+          </tr>
+
+          <tr>
+            <td>Casey Kelby</td>
+            <td>Ward 3</td>
+          </tr>
+
+          <tr>
+            <td>Cynthia Mowery</td>
+            <td>Ward 4</td>
+          </tr>
+
+          <tr>
+            <td>David McGaughey</td>
+            <td>Ward 5</td>
+          </tr>
+
+          <tr>
+            <td>Grant Godfrey</td>
+            <td>Ward 6</td>
+          </tr>
+
+          <tr>
+            <td>Kimberly Lopez</td>
+            <td>Ward 7</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <p class="note">
+      Council membership and ward assignments should be verified against the
+      Town's current official information before publication.
+    </p>
+
+  </div>
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="container">
+
+    <strong>
+      Keep University Park Connected
+    </strong>
+
+    <br>
+
+    A resident-focused website advocating for transparent, thoughtful,
+    and community-informed traffic-safety decisions.
+
+    <p class="disclaimer">
+      This is an independent community website and is not an official website
+      of the Town of University Park. Information about Town proposals should
+      be verified against official Town documents and announcements.
+    </p>
+
+  </div>
+
 </footer>
+
+
 <script>
-document.querySelectorAll('nav a').forEach(link => link.addEventListener('click', () => {
-  document.querySelector('nav').classList.remove('open');
-}));
+function toggleNav(){
+  const nav = document.querySelector('nav');
+  const button = document.querySelector('.menu-btn');
 
-document.getElementById('directions-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const start = document.getElementById('start-address').value.trim();
-  const destination = document.getElementById('destination-address').value.trim();
-  if (!start || !destination) return;
+  const isOpen = nav.classList.toggle('open');
 
-  // Google Maps Directions URLs cannot directly mark a specific road/intersection
-  // as closed. These detour waypoints steer the route around the Clagett Rd /
-  // Clagett-Pineway intersection instead of using that connection.
-  const detour = [
-    'College Heights Dr and Wells Pkwy, University Park, MD',
-    'Wells Pkwy and Queens Chapel Rd, University Park, MD'
-  ];
-  const url = 'https://www.google.com/maps/dir/?api=1'
-    + '&origin=' + encodeURIComponent(start)
-    + '&destination=' + encodeURIComponent(destination)
-    + '&waypoints=' + detour.map(encodeURIComponent).join('%7C');
-  window.open(url, '_blank', 'noopener');
+  button.setAttribute(
+    'aria-expanded',
+    isOpen ? 'true' : 'false'
+  );
+
+  button.setAttribute(
+    'aria-label',
+    isOpen ? 'Close navigation' : 'Open navigation'
+  );
+}
+
+
+document.querySelectorAll('nav a').forEach(link => {
+
+  link.addEventListener('click', () => {
+
+    const nav = document.querySelector('nav');
+    const button = document.querySelector('.menu-btn');
+
+    nav.classList.remove('open');
+
+    button.setAttribute(
+      'aria-expanded',
+      'false'
+    );
+
+    button.setAttribute(
+      'aria-label',
+      'Open navigation'
+    );
+
+  });
+
 });
+
+
+/*
+ * Route mapping
+ *
+ * Google Maps Directions URLs cannot directly mark a specific road/intersection
+ * as closed. These waypoints are intended to steer the route around the
+ * Clagett Road / Pineway connection.
+ */
+
+const directionsForm =
+  document.getElementById('directions-form');
+
+if (directionsForm) {
+
+  directionsForm.addEventListener('submit', function(e) {
+
+    e.preventDefault();
+
+    const start =
+      document.getElementById('start-address').value.trim();
+
+    const destination =
+      document.getElementById('destination-address').value.trim();
+
+    if (!start || !destination) {
+      return;
+    }
+
+    const detour = [
+      'College Heights Dr and Wells Pkwy, University Park, MD',
+      'Wells Pkwy and Queens Chapel Rd, University Park, MD'
+    ];
+
+    const url =
+      'https://www.google.com/maps/dir/?api=1'
+      + '&origin=' + encodeURIComponent(start)
+      + '&destination=' + encodeURIComponent(destination)
+      + '&travelmode=driving'
+      + '&waypoints='
+      + detour.map(encodeURIComponent).join('%7C');
+
+    window.open(
+      url,
+      '_blank',
+      'noopener,noreferrer'
+    );
+
+  });
+
+}
 </script>
+
 </body>
 </html>
